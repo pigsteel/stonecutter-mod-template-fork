@@ -63,7 +63,6 @@ fun Project.configureModPublishing(ctx: Context) {
 	extensions.configure<ModPublishExtension>("publishMods") {
 		val mrStaging = envTrue("PUB_MODRINTH_STAGING")
 		val modrinthAccessToken = env("PUB_MODRINTH_TOKEN")
-		val curseforgeAccessToken = env("PUB_CURSEFORGE_TOKEN")
 
 		val githubEnabled = envTrue("PUB_GITHUB_ENABLE")
 		if (envTrue("PUB_DRY_RUN") || !envTrue("PUB_MODS_ENABLE")) {
@@ -98,7 +97,6 @@ fun Project.configureModPublishing(ctx: Context) {
 		}
 
 		modrinth(ctx, ctx.publishAdditionalVersions, mrStaging, modrinthAccessToken)
-		if (!mrStaging) curseforge(ctx, ctx.publishAdditionalVersions, curseforgeAccessToken)
 	}
 }
 
@@ -122,27 +120,6 @@ private fun ModPublishExtension.modrinth(
 			deps.incompatible.forEach { dep -> whenNotNull(dep.modrinth) { platform.incompatible(it) } }
 			deps.embeds.forEach { dep -> whenNotNull(dep.modrinth) { platform.embeds(it) } }
 		}
-	}
-}
-
-private fun ModPublishExtension.curseforge(
-	ctx: Context, additionalVersions: List<String>, accessToken: String?
-) = curseforge {
-	projectId = project.env("PUB_CURSEFORGE_PROJECT_ID")
-
-	client = ctx.environmentPhysicalClient
-	server = ctx.environmentPhysicalServer
-
-	this.accessToken = accessToken
-	minecraftVersions.addAll(listOf(ctx.currentMcVersion) + additionalVersions)
-
-	val platform = this
-	project.afterEvaluate {
-		val deps = ctx.extension.dependencies
-		deps.required.forEach { dep -> whenNotNull(dep.curseforge) { platform.requires(it) } }
-		deps.optional.forEach { dep -> whenNotNull(dep.curseforge) { platform.optional(it) } }
-		deps.incompatible.forEach { dep -> whenNotNull(dep.curseforge) { platform.incompatible(it) } }
-		deps.embeds.forEach { dep -> whenNotNull(dep.curseforge) { platform.embeds(it) } }
 	}
 }
 
