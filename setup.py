@@ -166,7 +166,6 @@ issues_url = (
 discord_url = ask("Discord invite URL", optional=True)
 
 modrinth_id = ask("Modrinth project ID", optional=True)
-curseforge_id = ask("CurseForge project ID", optional=True)
 
 mod_environment = ask("Environment (client_only, server_only, dedicated_server_only, client_and_server, server_only_client_optional, client_only_server_optional, client_or_server_prefers_both, client_or_server, singleplayer_only)", default="client_and_server")
 validate_environment(mod_environment)
