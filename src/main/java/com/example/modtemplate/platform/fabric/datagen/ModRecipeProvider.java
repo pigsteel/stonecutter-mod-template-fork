@@ -13,7 +13,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 
 //? if 1.21.1
 //import net.minecraft.data.PackOutput;
@@ -24,7 +24,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
 	private final CompletableFuture<HolderLookup.Provider> registriesFuture;
 
-	public ModRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+	public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 		this.registriesFuture = registriesFuture;
 	}
