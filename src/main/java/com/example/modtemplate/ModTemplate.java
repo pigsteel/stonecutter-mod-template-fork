@@ -10,8 +10,6 @@ import org.slf4j.LoggerFactory;
 import com.example.modtemplate.platform.fabric.FabricPlatform;
 //?} neoforge {
 /*import com.example.modtemplate.platform.neoforge.NeoforgePlatform;
- *///?} forge {
-/*import com.example.modtemplate.platform.forge.ForgePlatform;
  *///?}
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -34,7 +32,7 @@ public class ModTemplate {
 		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
 	}
 
-	static Platform xplat() {
+	public static Platform xplat() {
 		return PLATFORM;
 	}
 
@@ -43,24 +41,14 @@ public class ModTemplate {
 		return new FabricPlatform();
 		//?} neoforge {
 		/*return new NeoforgePlatform();
-		 *///?} forge {
-		/*return new ForgePlatform();
 		 *///?}
 	}
 
-	private static ResourceLocation id(String path) {
-		//? > 1.19.2 {
+	public static ResourceLocation id(String path) {
 		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-		 //?} <= 1.19.2 {
-		/*return new ResourceLocation(MOD_ID, path);
-		*///?}
 	}
 
-	private static ResourceLocation id(String namespace, String path) {
-		//? > 1.19.2 {
+	public static ResourceLocation id(String namespace, String path) {
 		return ResourceLocation.fromNamespaceAndPath(namespace, path);
-		 //?} <= 1.19.2 {
-		/*return new ResourceLocation(namespace, path);
-		*///?}
 	}
 }
