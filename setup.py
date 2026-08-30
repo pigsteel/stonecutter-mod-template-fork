@@ -295,12 +295,6 @@ if not env_file.exists():
             r"PUB_MODRINTH_PROJECT_ID=.*",
             f"PUB_MODRINTH_PROJECT_ID={modrinth_id}",
         )
-    if curseforge_id:
-        regex_replace_in_file(
-            env_file,
-            r"PUB_CURSEFORGE_PROJECT_ID=.*",
-            f"PUB_CURSEFORGE_PROJECT_ID={curseforge_id}",
-        )
 else:
     warn(".env already exists, skipping.")
 
