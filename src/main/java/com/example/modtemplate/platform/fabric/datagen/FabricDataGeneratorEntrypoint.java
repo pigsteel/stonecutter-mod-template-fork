@@ -13,7 +13,6 @@ public class FabricDataGeneratorEntrypoint implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator generator) {
 		//? != 1.19.2 {
 		final FabricDataGenerator.Pack pack = generator.createPack();
-		pack.addProvider((FabricPackOutput output) -> new ModRecipeProvider(output, generator.getRegistries()));
 		//?}
 	}
 
