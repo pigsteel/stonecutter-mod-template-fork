@@ -113,7 +113,7 @@ For more details, read the [Stonecutter documentation](https://stonecutter.kikug
 
 ### Access Wideners/Transformers
 
-* Fabric Access Wideners: `src/main/resources/aw/*.accesswidener` (one per supported Minecraft version)
+* Fabric Access Wideners: `src/main/resources/aw/*.classtweaker` (one per supported Minecraft version)
 * (Neo)Forge Access Transformers: `src/main/resources/aw/*.cfg` (one per supported Minecraft version)
 
 ### Running in Development
