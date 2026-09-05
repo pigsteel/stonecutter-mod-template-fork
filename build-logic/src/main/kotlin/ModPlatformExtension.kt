@@ -46,7 +46,6 @@ abstract class Dependency @Inject constructor(val name: String) {
 
 	abstract val modid: Property<String>
 	abstract val modrinth: Property<String>
-	abstract val curseforge: Property<String>
 	abstract val fabricLikeVersionRange: Property<String>
 	abstract val forgeLikeVersionRange: Property<String>
 	abstract val environment: Property<String>
@@ -60,15 +59,11 @@ abstract class Dependency @Inject constructor(val name: String) {
 
 	fun slug(slug: String) {
 		modrinth.set(slug)
-		curseforge.set(slug)
 	}
 
 	fun slug(modrinthSlug: String? = null, curseforgeSlug: String? = null) {
 		if (modrinthSlug != null) {
 			modrinth.set(modrinthSlug)
-		}
-		if (curseforgeSlug != null) {
-			curseforge.set(curseforgeSlug)
 		}
 	}
 }
