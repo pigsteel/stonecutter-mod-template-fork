@@ -1,8 +1,6 @@
 package com.example.modtemplate;
 
 import com.example.modtemplate.platform.Platform;
-
-import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
