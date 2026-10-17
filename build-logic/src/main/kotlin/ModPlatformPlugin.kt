@@ -65,6 +65,9 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 			)
 		}
 
+		val (version, loader) = name.split('-', limit = 2)
+		project.sc.properties.tags(version, loader)
+
 		val ctx = Context(
 			project = this,
 			extension = extension,
@@ -97,6 +100,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 		configureModPublishing(ctx)
 
 		if (envTrue("PUB_MAVEN_ENABLE")) {
+			apply(plugin = "com.vanniktech.maven.publish")
 			configureMavenPublishing(ctx)
 		}
 	}
